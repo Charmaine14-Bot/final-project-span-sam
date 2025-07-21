@@ -1,5 +1,3 @@
-# Vibe-Coding-Hackathon-2.0
-
 # Span Sam.AI 🌍
 
 **Making the world a better place, one local service at a time.**
