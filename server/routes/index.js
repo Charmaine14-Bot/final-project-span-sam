@@ -1,7 +1,8 @@
+// server/routes/index.js
 const express = require('express');
 const router = express.Router();
 
-// Route files
+// Import route files
 const authRoutes = require('./auth.routes');
 const userRoutes = require('./user.routes');
 const serviceRoutes = require('./service.routes');

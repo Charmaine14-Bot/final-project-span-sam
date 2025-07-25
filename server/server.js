@@ -1,12 +1,13 @@
-const app = require('./app');
+const config = require('./config/env'); // or wherever your config is
+
 const mongoose = require('mongoose');
-const config = require('./config/env');
 
-mongoose.connect(config.database.url)
-  .then(() => console.log('DB connected'))
-  .catch(err => console.error('DB connection failed:', err));
-
-const PORT = config.port || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+mongoose.connect(config.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch((err) => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1);
 });

@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
-// Quote validation
-const quoteValidation = (data) => {
+// Quote validation middleware
+const validateQuote = (req, res, next) => {
   const schema = Joi.object({
     service: Joi.string().required(),
     description: Joi.string().min(10).max(500).required(),
@@ -9,9 +9,13 @@ const quoteValidation = (data) => {
     scheduledDate: Joi.date().required()
   });
 
-  return schema.validate(data);
+  const { error } = schema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ success: false, error: error.details[0].message });
+  }
+  next();
 };
 
 module.exports = {
-  quoteValidation
+  validateQuote,
 };
