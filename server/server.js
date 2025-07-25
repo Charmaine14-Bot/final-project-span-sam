@@ -8,5 +8,5 @@ mongoose.connect(config.database.url)
 
 const PORT = config.port || 5000;
 app.listen(PORT, () => {
-  console.log(Server running on port ${PORT});
+  console.log(`Server running on port ${PORT}`);
 });
